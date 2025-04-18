@@ -39,8 +39,8 @@ const mainBody = {
 const about = {
   show: true,
   heading: "About Me",
-  imageLink: require("../editable-stuff/hashirshoaeb.png"),
-  imageSize: 375,
+  // imageLink: require("../editable-stuff/hashirshoaeb.png"),
+  // imageSize: 375,
   message:
     "As a passionate Computer Science graduate with hands-on experience in Machine Learning, Deep Learning, and intelligent system design, I am driven by the transformative potential of AI in shaping secure, seamless digital experiences.My projects ranging from medical image classification using deep learning to enhancing speech quality using AI have strengthened my skills in building real-world, data-driven solutions. I enjoy solving complex problems that require a mix of innovation, performance, and responsibility.Visa’s commitment to tech-driven global impact and innovation resonates strongly with my values, and I’m eager to contribute meaningfully to your mission of enabling trusted, intelligent digital commerce worldwide."
   // resume: "https://docs.google.com/document/d/13_PWdhThMr6roxb-UFiJj4YAFOj8e_bv3Vx9UHQdyBQ/edit?usp=sharing",
@@ -59,55 +59,9 @@ const repos = {
   specificRepos: [],
 };
 
-// Leadership SECTION
-const leadership = {
-  show: false,
-  heading: "Leadership",
-  message:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae auctor eu augue ut lectus arcu bibendum at varius. Libero justo laoreet sit amet cursus sit amet. Imperdiet dui accumsan sit amet nulla facilisi morbi. At auctor urna nunc id. Iaculis urna id volutpat lacus laoreet non curabitur gravida. Et magnis dis parturient montes nascetur ridiculus mus mauris. In nisl nisi scelerisque eu ultrices vitae auctor. Mattis nunc sed blandit libero volutpat sed cras ornare. Pulvinar neque laoreet suspendisse interdum consectetur libero.",
-  images: [
-    { 
-      img: require("../editable-stuff/hashirshoaeb.png"), 
-      label: "First slide label", 
-      paragraph: "Nulla vitae elit libero, a pharetra augue mollis interdum." 
-    },
-    { 
-      img: require("../editable-stuff/hashirshoaeb.png"), 
-      label: "Second slide label", 
-      paragraph: "Nulla vitae elit libero, a pharetra augue mollis interdum." 
-    },
-  ],
-  imageSize: {
-    width:"615",
-    height:"450"
-  }
-};
 
-// SKILLS SECTION
-// const skills = {
-//   show: true,
-//   // heading: "Skills",
-//   hardSkills: [
-//     { name: "Python", value: 90 },
-//     { name: "SQL", value: 75 },
-//     { name: "Data Structures", value: 85 },
-//     { name: "C/C++", value: 65 },
-//     { name: "JavaScript", value: 90 },
-//     { name: "React", value: 65 },
-//     { name: "HTML/CSS", value: 55 },
-//     { name: "C#", value: 80 },
-//   ],
-//   softSkills: [
-//     { name: "Goal-Oriented", value: 80 },
-//     { name: "Collaboration", value: 90 },
-//     { name: "Positivity", value: 75 },
-//     { name: "Adaptability", value: 85 },
-//     { name: "Problem Solving", value: 75 },
-//     { name: "Empathy", value: 90 },
-//     { name: "Organization", value: 70 },
-//     { name: "Creativity", value: 90 },
-//   ],
-// };
+
+
 
 const skills = {
   show: true,
@@ -143,26 +97,6 @@ const getInTouch = {
   email: "hanagandidaneshwari@gmail.com",
 };
 
-const experiences = {
-  show: false,
-  heading: "Experiences",
-  data: [
-    {
-      role: 'Software Engineer',// Here Add Company Name
-      companylogo: require('../assets/img/dell.png'),
-      date: 'June 2018 – Present',
-    },
-    {
-      role: 'Front-End Developer',
-      companylogo: require('../assets/img/boeing.png'),
-      date: 'May 2017 – May 2018',
-    },
-  ]
-}
 
-// Blog SECTION
-// const blog = {
-//   show: false,
-// };
 
-export { navBar, mainBody, about, repos, skills, leadership, getInTouch, experiences };
+export { navBar, mainBody, about, repos, skills,getInTouch };
