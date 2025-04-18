@@ -5,79 +5,119 @@ import Row from "react-bootstrap/Row";
 import ProjectCard from "./ProjectCard";
 import axios from "axios";
 
-const dummyProject = {
-  name: null,
-  description: null,
-  svn_url: null,
-  stargazers_count: null,
-  languages_url: null,
-  pushed_at: null,
-};
-const API = "https://api.github.com";
-// const gitHubQuery = "/repos?sort=updated&direction=desc";
-// const specficQuerry = "https://api.github.com/repos/hashirshoaeb/";
+// const dummyProject = {
+//   name: null,
+//   description: null,
+//   svn_url: null,
+//   stargazers_count: null,
+//   languages_url: null,
+//   pushed_at: null,
+// };
+// const API = "https://api.github.com";
+// // const gitHubQuery = "/repos?sort=updated&direction=desc";
+// // const specficQuerry = "https://api.github.com/repos/hashirshoaeb/";
 
-const Project = ({ heading, username, length, specfic }) => {
-  const allReposAPI = `${API}/users/${username}/repos?sort=updated&direction=desc`;
-  const specficReposAPI = `${API}/repos/${username}`;
-  const dummyProjectsArr = new Array(length + specfic.length).fill(
-    dummyProject
-  );
+// const Project = ({ heading, username, length, specfic }) => {
+//   const allReposAPI = `${API}/users/${username}/repos?sort=updated&direction=desc`;
+//   const specficReposAPI = `${API}/repos/${username}`;
+//   const dummyProjectsArr = new Array(length + specfic.length).fill(
+//     dummyProject
+//   );
 
-  const [projectsArray, setProjectsArray] = useState([]);
+//   const [projectsArray, setProjectsArray] = useState([]);
 
-  const fetchRepos = useCallback(async () => {
-    let repoList = [];
-    try {
-      // getting all repos
-      const response = await axios.get(allReposAPI);
-      // slicing to the length
-      repoList = [...response.data.slice(0, length)];
-      // adding specified repos
-      try {
-        for (let repoName of specfic) {
-          const response = await axios.get(`${specficReposAPI}/${repoName}`);
-          repoList.push(response.data);
-        }
-      } catch (error) {
-        console.error(error.message);
-      }
-      // setting projectArray
-      // TODO: remove the duplication.
-      setProjectsArray(repoList);
-    } catch (error) {
-      console.error(error.message);
-    }
-  }, [allReposAPI, length, specfic, specficReposAPI]);
+//   const fetchRepos = useCallback(async () => {
+//     let repoList = [];
+//     try {
+//       // getting all repos
+//       const response = await axios.get(allReposAPI);
+//       // slicing to the length
+//       repoList = [...response.data.slice(0, length)];
+//       // adding specified repos
+//       try {
+//         for (let repoName of specfic) {
+//           const response = await axios.get(`${specficReposAPI}/${repoName}`);
+//           repoList.push(response.data);
+//         }
+//       } catch (error) {
+//         console.error(error.message);
+//       }
+//       // setting projectArray
+//       // TODO: remove the duplication.
+//       setProjectsArray(repoList);
+//     } catch (error) {
+//       console.error(error.message);
+//     }
+//   }, [allReposAPI, length, specfic, specficReposAPI]);
 
-  useEffect(() => {
-    fetchRepos();
-  }, [fetchRepos]);
+//   useEffect(() => {
+//     fetchRepos();
+//   }, [fetchRepos]);
 
+//   return (
+//     <Jumbotron fluid id="projects" className="bg-light m-0">
+//       <Container className="">
+//         <h2 className="display-4 pb-5 text-center">{heading}</h2>
+//         <Row>
+//           {projectsArray.length
+//             ? projectsArray.map((project, index) => (
+//               <ProjectCard
+//                 key={`project-card-${index}`}
+//                 id={`project-card-${index}`}
+//                 value={project}
+//               />
+//             ))
+//             : dummyProjectsArr.map((project, index) => (
+//               <ProjectCard
+//                 key={`dummy-${index}`}
+//                 id={`dummy-${index}`}
+//                 value={project}
+//               />
+//             ))}
+//         </Row>
+//       </Container>
+//     </Jumbotron>
+//   );
+// };
+
+// const Project = ({ heading, customProjects = [] }) => {
+//   return (
+//     <Jumbotron fluid id="projects" className="bg-light m-0">
+//       <Container>
+//         <h2 className="display-4 pb-5 text-center">{heading}</h2>
+//         <Row>
+//           {customProjects.map((project, index) => (
+//             <ProjectCard
+//               key={`custom-project-${index}`}
+//               id={`custom-project-${index}`}
+//               value={project}
+//             />
+//           ))}
+//         </Row>
+//       </Container>
+//     </Jumbotron>
+//   );
+// };
+
+// export default Project;
+
+import customProjects from "./customProjects";
+
+
+const Project = ({ heading }) => {
   return (
-    <Jumbotron fluid id="projects" className="bg-light m-0">
-      <Container className="">
-        <h2 className="display-4 pb-5 text-center">{heading}</h2>
+    <section className="projects-section py-5" id="projects">
+      <Container>
+        <h2 className="contact-title">{heading}</h2>
         <Row>
-          {projectsArray.length
-            ? projectsArray.map((project, index) => (
-              <ProjectCard
-                key={`project-card-${index}`}
-                id={`project-card-${index}`}
-                value={project}
-              />
-            ))
-            : dummyProjectsArr.map((project, index) => (
-              <ProjectCard
-                key={`dummy-${index}`}
-                id={`dummy-${index}`}
-                value={project}
-              />
-            ))}
+          {customProjects.map((project, index) => (
+            <ProjectCard key={`project-${index}`} value={project} />
+          ))}
         </Row>
       </Container>
-    </Jumbotron>
+    </section>
   );
 };
 
 export default Project;
+

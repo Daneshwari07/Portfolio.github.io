@@ -16,12 +16,13 @@ import Project from "./components/home/Project";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Skills from "./components/home/Skills";
+import Education from "./components/home/Education"
 // import { Blog } from "./components/blog/Blog";
 // import BlogPost from "./components/blog/BlogPost";
-import GetInTouch from "./components/home/GetInTouch.jsx";
-import Leadership from "./components/home/Leadership.jsx";
-
-import Experience from "./components/home/Experience";
+// import GetInTouch from "./components/home/GetInTouch.jsx";
+import DomainCard from "./components/home/DomainCard.jsx";
+import VisaTechInvestments from "./components/home/VisaTechInvestments";
+import ContactSection from "./components/home/ContactSection.jsx";
 
 const Home = React.forwardRef((props, ref) => {
   return (
@@ -42,11 +43,21 @@ const Home = React.forwardRef((props, ref) => {
           resume={about.resume}
         />
       )}
-      {
-        experiences.show && (
-          <Experience experiences={experiences}/>
-        )
-      }
+
+      <>
+      <Education />
+      <div className="-mt-14"> {/* Negative margin to pull it up */}
+       {skills.show && (
+        <Skills
+          heading={skills.heading}
+          hardSkills={skills.hardSkills}
+          softSkills={skills.softSkills}
+        />
+       )}
+      </div>
+      </>
+
+      <>
       {repos.show && (
         <Project
           heading={repos.heading}
@@ -55,22 +66,19 @@ const Home = React.forwardRef((props, ref) => {
           specfic={repos.specificRepos}
         />
       )}
-      {leadership.show && (
-        <Leadership
-          heading={leadership.heading}
-          message={leadership.message}
-          img={leadership.images}
-          imageSize={leadership.imageSize}
-        />
-      )}
-      {skills.show && (
-        <Skills
-          heading={skills.heading}
-          hardSkills={skills.hardSkills}
-          softSkills={skills.softSkills}
-        />
-      )}
-      
+      </>
+      <>
+        {repos.show && (
+         <div className="bg-white py-34 px-4 mt-16 shadow-inner"> 
+         <DomainCard/>
+         </div>
+         
+        )}
+        <VisaTechInvestments/>
+      </>
+      <>
+       <ContactSection/>
+      </>
     </>
   );
 });
@@ -86,15 +94,6 @@ const App = () => {
       </Routes>
       {/* {false && <Route path="/blog" exact component={Blog} />}
       {false && <Route path="/blog/:id" component={BlogPost} />} */}
-      <Footer>
-        {getInTouch.show && (
-          <GetInTouch
-            heading={getInTouch.heading}
-            message={getInTouch.message}
-            email={getInTouch.email}
-          />
-        )}
-      </Footer>
     </BrowserRouter>
   );
 };

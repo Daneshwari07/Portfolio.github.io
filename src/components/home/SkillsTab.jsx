@@ -1,38 +1,36 @@
 import React from "react";
-import Col from "react-bootstrap/Col";
-import SkillsBar from "./SkillsBar";
+import { Row, Col } from "react-bootstrap";
 
-function SkillsSection({ skills, isScrolled }) {
-  return (
-    <>
-      {skills.map((skill, index) => (
-        <SkillsBar
-          key={`${skill}-${index}`}
-          skill={skill.name}
-          value={skill.value}
-          isScrolled={isScrolled}
-        />
-      ))}
-    </>
-  );
-}
+function SkillsTab() {
+  const technicalSkills = ["C/C++","Data Structures", "Python","HTML","CSS","Javascript"];
+  const softSkills = ["Creativity","Teamwork","Problem-solving","Adaptability","Time-management","stress-management"];
 
-function SkillsTab({ skills, isScrolled }) {
   return (
-    <>
-      <Col xs={12} md={6}>
-        <SkillsSection
-          skills={skills.slice(0, Math.floor(skills.length / 2))}
-          isScrolled={isScrolled}
-        />
-      </Col>
-      <Col xs={12} md={6}>
-        <SkillsSection
-          skills={skills.slice(Math.floor(skills.length / 2), skills.length)}
-          isScrolled={isScrolled}
-        />
-      </Col>
-    </>
+    <div className="skills-container py-5">
+      <h2 className="text-center mb-5">Skills</h2>
+      <Row className="justify-content-center">
+        <Col xs={12} md={5} className="mb-4">
+          <div className="skills-box shadow-sm p-4 rounded border">
+            <h5 className="text-center mb-3 fw-bold">Technical Skills</h5>
+            <ul className="list-unstyled mb-0">
+              {technicalSkills.map((skill, idx) => (
+                <li key={idx} className="mb-2 text-primary">• {skill}</li>
+              ))}
+            </ul>
+          </div>
+        </Col>
+        <Col xs={12} md={5} className="mb-4">
+          <div className="skills-box shadow-sm p-4 rounded border">
+            <h5 className="text-center mb-3 fw-bold">Soft Skills</h5>
+            <ul className="list-unstyled mb-0">
+              {softSkills.map((skill, idx) => (
+                <li key={idx} className="mb-2 text-primary">• {skill}</li>
+              ))}
+            </ul>
+          </div>
+        </Col>
+      </Row>
+    </div>
   );
 }
 

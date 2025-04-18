@@ -38,14 +38,25 @@ const MainBody = React.forwardRef(
               </a>
             ))}
           </div>
-          <a
-            className="btn btn-outline-light btn-lg "
-            href="#aboutme"
-            role="button"
-            aria-label="Learn more about me"
-          >
-            More about me
-          </a>
+          <div className="d-flex justify-content-center gap-3">
+        <a
+         className="btn btn-outline-light btn-lg"
+         href="#contact"
+         role="button"
+         aria-label="Contact Me"
+        >
+         Contact Me
+        </a>
+        <a
+        className="btn btn-outline-light btn-lg"
+        href="#projects"
+        role="button"
+        aria-label="View My Work"
+        >
+        View Work
+       </a>
+      </div>
+
         </Container>
       </Jumbotron>
     );
